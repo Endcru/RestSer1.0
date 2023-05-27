@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/RestSer
+
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+
+logging:
+  level:
+    root: info
+    org.springframework.web: info
+    RestSer: debug
+
+jwt:
+  secret:
+    access:
+    refresh:
