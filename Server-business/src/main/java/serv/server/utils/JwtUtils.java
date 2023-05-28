@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import serv.server.domain.JwtAuthentication;
 import serv.server.domain.Role;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class JwtUtils {
@@ -22,9 +21,15 @@ public final class JwtUtils {
     }
 
     private static Set<Role> getRoles(Claims claims){
-        final List<String> roles = claims.get("roles", List.class);
-        return roles.stream()
-                .map(Role::valueOf)
-                .collect(Collectors.toSet());
+        final String role = claims.get("role", String.class);
+        Set<Role> roles = new HashSet<>();
+        if(role.equals("customer")){
+            roles.add(Role.CUSTOMER);
+        } else if(role.equals("chef")){
+            roles.add(Role.CHEF);
+        }else if(role.equals("manager")){
+            roles.add(Role.MANAGER);
+        }
+        return roles;
     }
 }

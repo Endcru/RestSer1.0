@@ -22,9 +22,4 @@ public class AuthController implements AuthApi {
     public JwtResponseDto getNewAccessToken(@RequestBody RefreshJwtRequestDto request) {
         return authService.getAccessToken(request.getRefreshToken());
     }
-
-    @Override
-    public JwtResponseDto getNewRefreshToken(@RequestBody RefreshJwtRequestDto request) {
-        return authService.refresh(request.getRefreshToken());
-    }
 }

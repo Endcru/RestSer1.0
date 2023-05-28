@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/check")
 public interface RoleCheckerApi {
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/user")
-    String checkUser();
+    @GetMapping("/customer")
+    String checkCustomer();
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/admin")
-    String checkAdmin();
+    @GetMapping("/chef")
+    String checkChef();
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/manager")
+    String checkManager();
 }

@@ -16,8 +16,4 @@ public interface AuthApi {
     @PostMapping("/token")
     @ResponseStatus(HttpStatus.OK)
     JwtResponseDto getNewAccessToken(@RequestBody RefreshJwtRequestDto request);
-
-    @PostMapping("/refresh")
-    @ResponseStatus(HttpStatus.OK)
-    JwtResponseDto getNewRefreshToken(@RequestBody RefreshJwtRequestDto request);
 }

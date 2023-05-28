@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+import serv.model.User;
 import serv.server.api.TokenProvider;
-import serv.server.domain.User;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
@@ -36,12 +36,20 @@ public class JwtProvider implements TokenProvider {
         final var accessExpirationInstant = now.plusMinutes(ACCESS_EXPIRATION_MINUTES).atZone(ZoneId.systemDefault()).toInstant();
         final var accessExpiration = Date.from(accessExpirationInstant);
         return Jwts.builder()
-                .setSubject(user.getLogin())
+                .setSubject(user.getEmail())
                 .setExpiration(accessExpiration)
                 .signWith(jwtAccessSecret)
-                .claim("roles", user.getRoles())
-                .claim("firstName", user.getFirstName())
+                .claim("roles", user.getRole())
+                .claim("username", user.getUsername())
                 .compact();
+    }
+
+    @Override
+    public java.util.Date dateAccessToken() {
+        final var now = LocalDateTime.now();
+        final var accessExpirationInstant = now.plusMinutes(ACCESS_EXPIRATION_MINUTES).atZone(ZoneId.systemDefault()).toInstant();
+        final var accessExpiration = Date.from(accessExpirationInstant);
+        return accessExpiration;
     }
 
     @Override
@@ -50,7 +58,7 @@ public class JwtProvider implements TokenProvider {
         final var refreshExpirationInstant = now.plusDays(REFRESH_EXPIRATION_DAYS).atZone(ZoneId.systemDefault()).toInstant();
         final var refreshExpiration = Date.from(refreshExpirationInstant);
         return Jwts.builder()
-                .setSubject(user.getLogin())
+                .setSubject(user.getEmail())
                 .setExpiration(refreshExpiration)
                 .signWith(jwtRefreshSecret)
                 .compact();

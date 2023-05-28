@@ -19,4 +19,7 @@ public class KeyGeneratorController implements KeyGeneratorApi {
     private static String generateKey(){
         return Encoders.BASE64.encode(Keys.secretKeyFor(SignatureAlgorithm.HS512).getEncoded());
     }
+    public static void main(String[] args){
+        System.out.println(generateKey());
+    }
 }

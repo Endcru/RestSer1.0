@@ -13,14 +13,20 @@ public class RoleCheckerController implements RoleCheckerApi {
     private final AuthService authService;
 
     @Override
-    @PreAuthorize("hasAuthority('USER')")
-    public String checkUser() {
-        return "Hello, user " + authService.getAuthInfo().getPrincipal() + "!";
+    @PreAuthorize("hasAuthority('customer')")
+    public String checkCustomer() {
+        return "Hello, customer " + authService.getAuthInfo().getPrincipal() + "!";
     }
 
     @Override
-    @PreAuthorize("hasAuthority('Admin')")
-    public String checkAdmin() {
-        return "Hello, admin " + authService.getAuthInfo().getPrincipal() + "!";
+    @PreAuthorize("hasAuthority('chef')")
+    public String checkChef() {
+        return "Hello, chef " + authService.getAuthInfo().getPrincipal() + "!";
+    }
+
+    @Override
+    @PreAuthorize("hasAuthority('manager')")
+    public String checkManager() {
+        return "Hello, manager " + authService.getAuthInfo().getPrincipal() + "!";
     }
 }
