@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "63265c86-5dfb-430c-86e8-a1ba55e6670a",
+		"name": "RestServ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27662000"
+	},
+	"item": [
+		{
+			"name": "keygen",
+			"item": [
+				{
+					"name": "generate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/RestSer/keygen/generate"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"Endcru@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbmRjcnVAZ21haWwuY29tIiwiZXhwIjoxNjg1Mzg3MjA1fQ.HzvqR6vBgwdTiRW9J0T6rRNr0owHqhUun3Cd04ypvZtbWldfUh65ozkpuiVE1oVL_ZUtTJ_bq07slobxGrpQUQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/auth/token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check",
+			"item": [
+				{
+					"name": "check_customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbmRjcnVAZ21haWwuY29tIiwiZXhwIjoxNjg1MzAyMzA1LCJyb2xlcyI6ImN1c3RvbWVyIiwidXNlcm5hbWUiOiJFbmRjcnUifQ.TnXS6pFQmHc4Cu9YPM7oSC6slDhbPBVXVm6u_HyJKA7czlfre6FO7P6cOOQ0ISt3Ssp5f0blKs-YWtb9yK1uzw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/RestSer/check/customer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "regesrtate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Death\",\r\n    \"login\": \"Death123@gmail.com\",\r\n    \"password\": \"Hromaya\",\r\n    \"role\": \"chef\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/reg/make"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "info",
+			"item": [
+				{
+					"name": "infoUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"Endcru@gmail.com\",\r\n    \"accessToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJFbmRjcnVAZ21haWwuY29tIiwiZXhwIjoxNjg1MzA5OTg4LCJyb2xlcyI6ImN1c3RvbWVyIiwidXNlcm5hbWUiOiJFbmRjcnUifQ.zeY6KX7k-ptZ6g8LepnDR-8phhf0G-i3c-SaHj3XxIdEFAOZXGZMFNErRUnQJZXX_yZILJyyWKCA3uQbQG5jag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/info/user"
+					},
+					"response": []
+				},
+				{
+					"name": "menu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:8080/api/RestSer/info/menu"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "start_order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"3\",\r\n    \"dishId\": null,\r\n    \"orderId\": null,\r\n    \"num\": null,\r\n    \"text\": \"Побольше и побыстрее.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/order/start"
+					},
+					"response": []
+				},
+				{
+					"name": "add_dish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"3\",\r\n    \"dishId\": \"5\",\r\n    \"orderId\": \"3\",\r\n    \"num\": \"5\",\r\n    \"text\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/RestSer/order/add"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
