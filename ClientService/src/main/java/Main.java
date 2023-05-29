@@ -61,7 +61,14 @@ public class Main {
                 String email, username, password, role;
                 while (true){
                     System.out.println("Введите почту пользователя");
-                    inputMessage = scanner.nextLine();
+                    while (true) {
+                        inputMessage = scanner.nextLine();
+                        if (!inputMessage.contains("@")) {
+                            System.out.println("В вашей почте отсутсвует @");
+                        } else {
+                            break;
+                        }
+                    }
                     JSONObject obj = new JSONObject();
                     obj.put("login", inputMessage);
                     String json = obj.toString();
@@ -98,7 +105,7 @@ public class Main {
                 System.out.println("Введите пароль");
                 password = scanner.nextLine();
                 System.out.println("Введите секретный пароль к вашей роли.\n" +
-                        " В обратном случае вам будет присвоена роль пользователя.");
+                        "В обратном случае вам будет присвоена роль пользователя.");
                 inputMessage = scanner.nextLine();
                 if(inputMessage.equals("12345")){
                     role = "chef";
@@ -118,6 +125,7 @@ public class Main {
                 HttpPost postMethod = new HttpPost("http://localhost:8080/api/RestSer/reg/make");
                 postMethod.setEntity(requestEntity);
                 httpClient.execute(postMethod);
+                System.out.println("Вы успешно зарегестрировались.");
             } else if(inputMessage.equals("Выход")){
                 break;
             }
