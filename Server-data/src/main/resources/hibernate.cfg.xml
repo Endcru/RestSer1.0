@@ -13,6 +13,9 @@
 
     <mapping class="serv.model.User"/>
     <mapping class="serv.model.UserSession"/>
+    <mapping class="serv.model.Dish"/>
+    <mapping class="serv.model.Order"/>
+    <mapping class="serv.model.OrderDish"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

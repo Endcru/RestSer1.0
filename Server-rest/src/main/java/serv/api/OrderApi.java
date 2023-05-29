@@ -5,17 +5,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import serv.model.User;
-import serv.server.dto.JwtInfoUserRequestDto;
-import serv.server.dto.JwtMenuDto;
+import serv.server.dto.JwtOrderRequestDto;
+import serv.server.dto.JwtResponseOrderDto;
 
+@RequestMapping("/order")
+public interface OrderApi {
+    @PostMapping("/start")
+    @ResponseStatus(HttpStatus.OK)
+    JwtResponseOrderDto makeOrder(@RequestBody JwtOrderRequestDto orderRequest);
 
-@RequestMapping("/info")
-public interface InformApi {
-    @PostMapping("/user")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
-    User findUser(@RequestBody JwtInfoUserRequestDto infRequest);
-    @PostMapping("/menu")
-    @ResponseStatus(HttpStatus.OK)
-    JwtMenuDto getMenu();
+    JwtResponseOrderDto addDishToOrder(@RequestBody JwtOrderRequestDto orderRequest);
 }

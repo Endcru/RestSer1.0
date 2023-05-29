@@ -17,7 +17,7 @@ public class UserSession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "user_id", nullable = false, unique = true)
+    @Column(name = "user_id", nullable = false)
     private  Integer userId;
     @Column(name = "session_token", nullable = false)
     private String sessionToken;

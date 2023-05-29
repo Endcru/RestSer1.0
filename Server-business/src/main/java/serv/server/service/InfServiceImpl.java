@@ -3,11 +3,15 @@ package serv.server.service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import serv.model.Dish;
 import serv.model.User;
 import serv.server.api.InfService;
 import serv.server.api.TokenProvider;
 import serv.server.dto.JwtInfoUserRequestDto;
+import serv.server.dto.JwtMenuDto;
+import serv.service.FindDish;
 import serv.service.FindUser;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +25,11 @@ public class InfServiceImpl implements InfService {
         } else{
             return User.builder().username("token").build();
         }
+    }
+
+    @Override
+    public JwtMenuDto getMenu() {
+        List<Dish> menu = FindDish.findAllDish();
+        return new JwtMenuDto(menu);
     }
 }
